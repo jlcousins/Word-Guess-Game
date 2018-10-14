@@ -54,6 +54,7 @@ function updateDisplay() {
     }
 };
 
+//resets game if all guesses have been used/game is finished
 document.onkeydown = function(event) {
     if(hasFinished) {
         resetGame();
@@ -70,6 +71,7 @@ function makeGuess(letter) {
         if (!gameStarted) {
             gameStarted = true;
         }
+        //keeps track if we used letter already
         if (guessedLetters.indexOf(letter) === -1) {
             guessedLetters.push(letter);
             evaluateGuess(letter);
@@ -80,6 +82,7 @@ function makeGuess(letter) {
     checkWin();
 };
 
+//replace blank spot with guessed letter
 function evaluateGuess(letter) {
     var positions = [];
     for (var i = 0; i < wordChoices[currentWordIndex].length; i++) {
